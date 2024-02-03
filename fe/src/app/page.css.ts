@@ -18,11 +18,12 @@ export const header = style({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: "space-between",
-  width: '110px',
+  width: '130px',
   height: '100dvh',
   fontSize: '25px',
   backgroundColor: "white",
   color: global.foreground.color,
+  borderRight: '0.5px solid gray' ,
   '@media': {
     '(max-width: 1100px)': {
       flexDirection: 'row',
@@ -35,7 +36,7 @@ export const header = style({
 export const logo = style({
   display: 'flex',
   flexDirection: 'row',
-  margin: '7px',
+  margin: '10px',
   '@media': {
     '(max-width: 1100px)': {
       flexDirection: 'row',
