@@ -21,6 +21,7 @@ class Store(Base):
 
 # 데이터베이스 연결 설정
 engine = create_engine('mysql+mysqlconnector://root:1234@localhost:3306/ana?charset=utf8mb4')
+
 Session = sessionmaker(bind=engine)
 
 # 테이블 자동 생성
