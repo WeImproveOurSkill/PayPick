@@ -1,8 +1,11 @@
 package com.example.be.common.domain.store.controller;
 
+import static com.example.be.common.domain.store.controller.StoreController.STORE_API_URI;
+
 import com.example.be.common.domain.store.dto.PositionRequestDto;
 import com.example.be.common.domain.store.dto.StoreDto;
 import com.example.be.common.domain.store.dto.StoreResponseListDto;
+import com.example.be.common.domain.store.entity.Store;
 import com.example.be.common.domain.store.service.StoreService;
 import com.example.be.common.utils.SetHttpHeaders;
 import java.util.List;
@@ -18,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(StoreController.STORE_API_URI)
+@RequestMapping(STORE_API_URI)
 public class StoreController {
 
     private final StoreService storeService;
@@ -36,7 +39,13 @@ public class StoreController {
     @GetMapping("/{storeId}")
     public ResponseEntity<StoreDto> getStoreInfo(@PathVariable Long storeId) {
         StoreDto storeDto = storeService.getStoreInfo(storeId);
-        return ResponseEntity.ok().header(setHttpHeaders.setHttpHeaderTypeJson()).body(storeDto);
+        return ResponseEntity.ok().body(storeDto);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Store>> allList() {
+        List<Store> storeList = storeService.findAll();
+        return ResponseEntity.ok().body(storeList);
     }
 
 }

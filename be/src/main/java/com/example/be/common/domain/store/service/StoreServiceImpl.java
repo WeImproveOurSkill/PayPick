@@ -33,4 +33,10 @@ public class StoreServiceImpl implements StoreService {
         StoreDto storeDto = new StoreDto(store);
         return storeDto;
     }
+
+    @Override
+    public List<Store> findAll() {
+        return storeRepository.findAll();
+    }
+
 }

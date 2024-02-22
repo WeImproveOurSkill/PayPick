@@ -1,4 +1,5 @@
 from decimal import Decimal
+
 from sqlalchemy import create_engine, Column, Integer, String, DECIMAL
 from sqlalchemy.orm import sessionmaker, declarative_base  # 수정된 import 문
 import pandas as pd
@@ -12,12 +13,11 @@ class Store(Base):
     __tablename__ = 'store'
     id = Column(Integer, primary_key=True)
     store_name = Column(String(255))  # 예를 들어, 최대 길이를 255로 설정
-    majorCategory = Column(String(50))
-    middleCategory = Column(String(50))
-    address = Column(String(255))
+    major_category = Column(String(250))  # 데이터베이스 컬럼 타입에 맞춰 수정
+    middle_category = Column(String(250))
+    store_address = Column(String(255))
     latitude = Column(DECIMAL(9, 6))
     longitude = Column(DECIMAL(9, 6))
-
 
 # 데이터베이스 연결 설정
 engine = create_engine('mysql+mysqlconnector://root:1234@localhost:3306/ana?charset=utf8mb4')
@@ -44,9 +44,9 @@ with Session() as session:
         if temp_c == '음식':
             store = Store(
                 store_name=store_name,
-                majorCategory=temp_c,
-                middleCategory=middle_c,  # 필요한 경우 길이 제한 적용
-                address=row['도로명주소'][:255],  # 필요한 경우 길이 제한 적용
+                major_category=temp_c,
+                middle_category=middle_c,  # 필요한 경우 길이 제한 적용
+                store_address=row['도로명주소'][:255],  # 필요한 경우 길이 제한 적용
                 latitude=Decimal(str(row['위도'])),
                 longitude=Decimal(str(row['경도']))
 
@@ -57,9 +57,9 @@ with Session() as session:
             if middle_c in middle:
                 store = Store(
                     store_name=store_name,
-                    majorCategory=major_c,
-                    middleCategory=middle_c,  # 필요한 경우 길이 제한 적용
-                    address=row['도로명주소'][:255],  # 필요한 경우 길이 제한 적용
+                    major_category=major_c,
+                    middle_category=middle_c,  # 필요한 경우 길이 제한 적용
+                    store_address=row['도로명주소'][:255],  # 필요한 경우 길이 제한 적용
                     latitude=Decimal(str(row['위도'])),
                     longitude=Decimal(str(row['경도']))
 

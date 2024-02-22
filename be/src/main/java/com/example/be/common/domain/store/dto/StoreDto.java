@@ -5,11 +5,15 @@ import com.example.be.common.domain.store.entity.Store;
 import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Builder
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class StoreDto {
     private Long id;
 
@@ -21,7 +25,7 @@ public class StoreDto {
 
     private String storeAddress;
 
-    private List<Payway> paywayList = new ArrayList<>();
+    private List<Payway> paywayList;
 
     public StoreDto (Store store) {
         this.id = store.getId();

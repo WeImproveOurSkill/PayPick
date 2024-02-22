@@ -1,6 +1,7 @@
 package com.example.be.common.domain.store.entity;
 
 import com.example.be.common.domain.payway.entity.Payway;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,6 +27,7 @@ public class Store {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", columnDefinition = "int")
     private Long id;
 
     private String storeName;
@@ -43,6 +45,7 @@ public class Store {
     private float longitude;
 
     @OneToMany(mappedBy = "store")
+    @Builder.Default
     private List<Payway> paywayList = new ArrayList<>();
 
 }
