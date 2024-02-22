@@ -14,6 +14,7 @@ public class StoreResponseListDto {
     private Long storeId;
     private String storeName;
     private String storeEnum;
-    private Point storePosition;
+    private float latitude;
 
+    private float longitude;
 }

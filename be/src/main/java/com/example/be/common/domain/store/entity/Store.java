@@ -1,11 +1,15 @@
 package com.example.be.common.domain.store.entity;
 
+import com.example.be.common.domain.payway.entity.Payway;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -32,12 +36,13 @@ public class Store {
 
     private String storeAddress;
 
+    //위도 ----
     private float latitude;
 
+    //경도 ||||
     private float longitude;
 
-    @ManyToOne
-    @J
-    private List<Payway> paywayList;
+    @OneToMany(mappedBy = "store")
+    private List<Payway> paywayList = new ArrayList<>();
 
 }
