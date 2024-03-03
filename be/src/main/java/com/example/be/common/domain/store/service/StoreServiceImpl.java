@@ -34,9 +34,9 @@ public class StoreServiceImpl implements StoreService {
         return storeDto;
     }
 
-    @Override
-    public List<Store> findAll() {
-        return storeRepository.findAll();
-    }
+//    @Override
+//    public List<Store> findAll() {
+//        return storeRepository.findAll();
+//    }
 
 }
