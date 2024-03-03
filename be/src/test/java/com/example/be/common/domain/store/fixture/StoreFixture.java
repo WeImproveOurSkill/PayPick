@@ -50,4 +50,6 @@ public class StoreFixture {
 
     public static final List<StoreResponseListDto> STORE_RESPONSE_LIST_DTO_LIST = new ArrayList<>(
         Collections.singletonList(STORE_RESPONSE_LIST_DTO));
+
+    public static final Long STORE_ID = 1L;
 }
