@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
 
 @Getter
 @Builder
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class Point {
 
     //latitude, x
-    private double latitude;
+    private double lat;
     //longitude, y
-    private double longitude;
+    private double lng;
 }
