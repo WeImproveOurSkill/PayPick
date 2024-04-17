@@ -1,19 +1,17 @@
 "use client"
 
 import { useEffect } from "react";
-import { Marker } from "@/types/map";
+import { Marker as MarkerType  } from "@/types/map";
 
-
-const Marker = ({ map, coordinates }: Marker): null => {
+const Marker = ({ map, coordinates}: MarkerType): null => {
     
   useEffect(() => {
-      if (!map) return;
       let marker: naver.maps.Marker | null = null;
       if (map) {
           marker = new naver.maps.Marker({
-              map: map,
-              position: new naver.maps.LatLng(...coordinates),
-              icon:{
+          map: map,
+          position: new naver.maps.LatLng(...coordinates),
+          icon:{
                 url: '/marker.svg',
                 size: new naver.maps.Size(30, 45),
                 origin: new naver.maps.Point(0, 0),
@@ -29,21 +27,9 @@ const Marker = ({ map, coordinates }: Marker): null => {
       return () => {
       marker?.setMap(null);
       };
-}, [map]);
+}, [map]); // eslint-disable-line react-hooks/exhaustive-deps
 
 return null;
 };
 
 export default Marker;
-
-// {
-//   "leftPosition": {
-//   "lat": 37.395628,
-//   "lng": 126.929901
-// },
-// "rightPosition": {
-//   "lat": 37.400051,
-//   "lng": 126.93025
-// }
-// }
-  
