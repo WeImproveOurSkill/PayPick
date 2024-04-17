@@ -6,6 +6,7 @@ import { Marker as MarkerType  } from "@/types/map";
 const Marker = ({ map, coordinates}: MarkerType): null => {
     
   useEffect(() => {
+      if (!map) return;
       let marker: naver.maps.Marker | null = null;
       if (map) {
           marker = new naver.maps.Marker({
@@ -27,7 +28,7 @@ const Marker = ({ map, coordinates}: MarkerType): null => {
       return () => {
       marker?.setMap(null);
       };
-}, [map]); // eslint-disable-line react-hooks/exhaustive-deps
+}, [map]);
 
 return null;
 };

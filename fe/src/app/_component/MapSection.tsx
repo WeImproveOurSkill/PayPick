@@ -10,7 +10,6 @@ import useStore from '@/hooks/useStore';
 import StoreDetail from './StoreDetail';
 
 
-
 const MapSection = () => {
     const queryClient = new QueryClient()
     const dehydratedState = dehydrate(queryClient)
@@ -24,6 +23,9 @@ const MapSection = () => {
         naver.maps.Event.addListener(map, 'click', clearCurrentStore);
     };
 
+    const data = queryClient.getQueryData<NaverMap>([MAP_KEY])
+    console.log(data);
+
     return (
         <>
             <HydrationBoundary state={dehydratedState}>
@@ -33,7 +35,6 @@ const MapSection = () => {
                 <Markers />
                 <StoreDetail />
             </HydrationBoundary>
-            
         </>
     );
 };

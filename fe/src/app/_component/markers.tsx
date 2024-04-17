@@ -64,10 +64,10 @@ const Markers = () => {
   };
   // if (isLoading) return <div>Loading...</div>;
 
+
   // 에러 발생시 UI 처리
   if (error) return <div>{error.message}</div>;
   // if (error) return console.log(error.message);
-  
   
   return (
     <>
@@ -80,7 +80,6 @@ const Markers = () => {
             key={store.id}
             onClick={() => {
               setCurrentStore(store)
-            }}
           />
         );
       })}
