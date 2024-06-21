@@ -8,12 +8,13 @@ import useStore from '@/hooks/useStore';
 import StoreDetail from './StoreDetail';
 import { useModalStore } from '@/store/modal';
 import MarkerCluster from './MarkerCluster';
+import { useEffect } from 'react';
 
 const MapSection = () => {
     const queryClient = new QueryClient();
     const dehydratedState = dehydrate(queryClient);
     const { rerenderModal } = useModalStore();
-    const { initializeMap, center } = useMap();
+    const { initializeMap, center, getGeoLocation } = useMap();
     const { clearCurrentStore } = useStore();
    
     const onLoadMap = (map: NaverMap) => {
@@ -30,6 +31,10 @@ const MapSection = () => {
             }, 100);
         });
     };
+
+    useEffect(() => {
+        getGeoLocation();
+      }, []);
     
     return (
         <>
