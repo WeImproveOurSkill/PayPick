@@ -1,5 +1,3 @@
-export const baseUrl = `http://localhost:8080`
-
 export async function getApi (url:string) {
   try {
     const res = await fetch(url);
@@ -10,7 +8,7 @@ export async function getApi (url:string) {
   }
 }
 
-export async function postApi (url:string, newData:string) {
+export async function postApi (url:string, newData:string | object) {
     try {
       const res = await fetch(url, {
         method: 'POST',
