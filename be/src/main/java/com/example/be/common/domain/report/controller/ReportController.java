@@ -9,6 +9,7 @@ import com.example.be.common.domain.report.service.ReportService;
 import com.example.be.common.dto.StatusResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(REPORT_URI)
+@CrossOrigin(origins = "*") // 모든 도메인 허용
 public class ReportController {
 
   private final ReportService reportService;
