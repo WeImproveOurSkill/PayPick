@@ -25,11 +25,11 @@ public class ReportServiceImpl implements ReportService {
    * 이미 존재하는 매장, 매장 전용 오류 전송을 통해 리포트 작성
    */
   public void reportExistStore(Long storeId, ReportStoreDto reportStoreDto) {
-    if (storeService.existsByStoreId(storeId)) {
-       Report report = new Report(reportStoreDto);
-       reportRepository.save(report);
+    if (!storeService.existsByStoreId(storeId)) {
+      throw new IllegalArgumentException("해당 가게는 존재하지 않습니다");
     }
-    throw new IllegalArgumentException("해당 가게는 존재하지 않습니다");
+    Report report = new Report(reportStoreDto);
+    reportRepository.save(report);
 
   }
 
@@ -42,14 +42,15 @@ public class ReportServiceImpl implements ReportService {
    * if 문으로 분기점 판별
    */
   public void reportStore(ReportStoreDto reportStoreDto) {
-    Store store;
-    if(!storeService.existsByStoreName(reportStoreDto.getStoreName())){
-      store = storeService.createStore(reportStoreDto.getStoreName());
-    }
-    else {
-      store = storeService.findByStoreName(reportStoreDto.getStoreName());
-    }
-    Report report = Report.builder().store(store)
+//    Store store;
+//    if(!storeService.existsByStoreName(reportStoreDto.getStoreName())){
+//      store = storeService.createStore(reportStoreDto.getStoreName());
+//    }
+//    else {
+//      store = storeService.findByStoreName(reportStoreDto.getStoreName());
+//    }
+    Report report = Report.builder()
+//        .store(store)
         .storeName(reportStoreDto.getStoreName())
         .errorType(reportStoreDto.getErrorType())
         .errorContent(reportStoreDto.getErrorContent())

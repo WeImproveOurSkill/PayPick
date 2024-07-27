@@ -27,14 +27,14 @@ public class ReportController {
   public static final String REPORT_URI = "/report";
 
   @PostMapping("/{storeId}")
-  public ResponseEntity reportExistStore(@PathVariable("storeId") Long storeId, @RequestBody ReportStoreDto reportStoreDto) {
+  public ResponseEntity<StatusResponse> reportExistStore(@PathVariable("storeId") Long storeId, @RequestBody ReportStoreDto reportStoreDto) {
     reportService.reportExistStore(storeId, reportStoreDto);
     return RESPONSE_OK;
   }
 
 
   @PostMapping
-  public ResponseEntity reportStore(@RequestBody ReportStoreDto reportStoreDto) {
+  public ResponseEntity<StatusResponse> reportStore(@RequestBody ReportStoreDto reportStoreDto) {
     reportService.reportStore(reportStoreDto);
     return RESPONSE_OK;
   }
