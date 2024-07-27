@@ -17,7 +17,7 @@ export async function postApi (url:string, newData:string | object) {
         },
         body: JSON.stringify(newData)
       });
-
+      
       return await res.json()
     }catch (error) {
     console.error(error);
