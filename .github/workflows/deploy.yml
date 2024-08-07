@@ -26,6 +26,7 @@ jobs:
       run: |
         rsync -avz -e "ssh -o StrictHostKeyChecking=no" ./fe/ ubuntu@${{ secrets.EC2_HOST }}:/home/ubuntu/paypick
 
+
     - name: Install dependencies and restart application
       run: |
         ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
