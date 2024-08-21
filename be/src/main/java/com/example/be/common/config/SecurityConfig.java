@@ -89,6 +89,7 @@ public class SecurityConfig {
                 .requestMatchers("/report/**").permitAll()
                 .requestMatchers("/admin/**").permitAll()
                 .requestMatchers(HttpMethod.GET,"/").permitAll()
+
                 .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                 .anyRequest().authenticated());
 
