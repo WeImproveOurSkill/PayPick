@@ -106,7 +106,6 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.addAllowedOrigin("*"); // 특정 도메인을 허용
         configuration.addAllowedOriginPattern("*"); // 도메인 패턴(정규표현식) 허용
-
         configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.setAllowCredentials(true);
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type","Access-Control-Allow-Origin"));
