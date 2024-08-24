@@ -3,7 +3,7 @@ name: Deploy Frontend to EC2
 on:
   push:
     branches:
-      - fe-deploy-set
+      - dev
 
 jobs:
   deploy:
@@ -60,5 +60,5 @@ jobs:
       run: |
         ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
           cd /home/ubuntu/paypick
-          pm2 start npm --name "next-app" -- run dev:custom
+          pm2 start npm --name "next-app" -- start
         EOF
