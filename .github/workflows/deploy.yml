@@ -39,9 +39,17 @@ jobs:
         ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
           
           cd /home/ubuntu/paypick
-          git pull origin dev
+          
+          # Stop all PM2 processes
           pm2 kill
+
+          # Clean up and install dependencies
+          rm -rf node_modules
           npm install
+
+          # Build the project
           npm run build
-          pm2 start npm -- run dev:custom
+
+          # Start the application with PM2
+          pm2 start npm --name "next-app" -- run dev:custom
         EOF
