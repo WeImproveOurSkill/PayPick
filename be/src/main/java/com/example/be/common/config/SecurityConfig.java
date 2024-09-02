@@ -94,6 +94,7 @@ public class SecurityConfig {
                 .requestMatchers("/admin/**").permitAll()
                 .requestMatchers("/chat/**").permitAll()
                 .requestMatchers("/room/**").permitAll()
+
                 .requestMatchers(HttpMethod.GET,"/").permitAll()
                 .requestMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                 .anyRequest().authenticated());
