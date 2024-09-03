@@ -25,6 +25,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     registry.addEndpoint("/chat")
 //            .withSockJS()// socket 연결 url
         // 주소 : ws://localhost:8788/chat 으로 연결
+        .setAllowedOriginPatterns("https://localhost:3000")
         .setAllowedOriginPatterns("*");
 //            .withSockJS(); //
   }
