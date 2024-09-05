@@ -30,6 +30,7 @@ public class SecurityConfig {
         httpSecurity.sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(
             SessionCreationPolicy.STATELESS));
 
+
         httpSecurity.authorizeHttpRequests(auth -> auth
             .requestMatchers("/store/**", "/report/**", "/admin/**", "/room/**")
             .permitAll()
