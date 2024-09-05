@@ -34,39 +34,62 @@ public class SecurityConfig {
             .requestMatchers("/store/**", "/report/**", "/admin/**", "/room/**")
             .permitAll()
             .requestMatchers(HttpMethod.GET, "/").permitAll()
-            .requestMatchers("/chat/**").permitAll()
+            .requestMatchers("/ws/chat/**").permitAll()
             .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
             .anyRequest().authenticated());
 
         return httpSecurity.build();
     }
-
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
+//
+//    @Bean
+//    public CorsConfigurationSource corsConfigurationSource() {
+////        CorsConfiguration configuration = new CorsConfiguration();
+////        configuration.setAllowedMethods(Arrays.asList("*"));
+////        configuration.setAllowCredentials(true);
+////        configuration.addAllowedHeader("*");
+////        configuration.setExposedHeaders(Arrays.asList("*"));
+////
+////        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+////        source.registerCorsConfiguration("/**", configuration);
+////        return source;
 //        CorsConfiguration configuration = new CorsConfiguration();
-////        configuration.addAllowedOrigin("*"); // 특정 도메인 허용
-//        configuration.addAllowedOriginPattern("https://localhost:3000"); // 도메인 패턴 허용
+//        configuration.addAllowedOrigin("*"); // 특정 도메인 허용
+//        configuration.addAllowedOriginPattern("*"); // 도메인 패턴 허용
+//        configuration.addAllowedOrigin("http://localhost:3000"); // 특정 도메인 허용
+////        configuration.addAllowedOrigin("http://localhost"); // 특정 도메인 허용
+////        configuration.addAllowedOriginPattern("http://localhost:3000");  // 정확한 도메인 패턴 허용
+////        configuration.addAllowedOriginPattern("http://localhost");  // 정확한 도메인 패턴 허용
 //        configuration.setAllowedMethods(Arrays.asList("*"));
 //        configuration.setAllowCredentials(true);
+//        configuration.setAllowedHeaders(Arrays.asList("*"));
 //        configuration.addAllowedHeader("*");
-////        configuration.setAllowedHeaders(Arrays.asList("*"));
 //        configuration.setExposedHeaders(Arrays.asList("*"));
 //
 //        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 //        source.registerCorsConfiguration("/**", configuration);
 //        return source;
+//    }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.addAllowedOrigin("https://localhost:3000"); // 특정 도메인 허용
-        configuration.addAllowedOrigin("https://localhost"); // 특정 도메인 허용
-        configuration.addAllowedOriginPattern("https://localhost:3000");  // 정확한 도메인 패턴 허용
-        configuration.addAllowedOriginPattern("https://localhost");  // 정확한 도메인 패턴 허용
-        configuration.setAllowedMethods(Arrays.asList("*"));
+
+        // 특정 도메인 허용
+        configuration.addAllowedOrigin("https://localhost:3000");
+
+        // 허용할 HTTP 메서드 지정
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+
+        // 허용할 헤더 지정
+        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
+
+        // 자격 증명 허용 (쿠키 등)
         configuration.setAllowCredentials(true);
-        configuration.addAllowedHeader("*");
-        configuration.setExposedHeaders(Arrays.asList("*"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
+
         return source;
     }
+
 }

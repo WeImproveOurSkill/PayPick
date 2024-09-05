@@ -14,17 +14,18 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
   @Override
   public void registerStompEndpoints(StompEndpointRegistry registry) {
-    registry.addEndpoint("/chat")
-//        .setAllowedOriginPatterns("*");
-        .setAllowedOriginPatterns("https://localhost:3000")
-        .withSockJS();
+    registry.addEndpoint("/ws/chat")
+        .setAllowedOriginPatterns("*")
+        .setAllowedOrigins("*");
+//        .setAllowedOriginPatterns("https://localhost:3000");
+//        .withSockJS();
   }
 
   @Override
   public void configureMessageBroker(MessageBrokerRegistry registry) {
-    registry.enableSimpleBroker("/topic")
-        .setHeartbeatValue(new long[]{1000, 1000})
-        .setTaskScheduler(taskScheduler());  // TaskScheduler 설정
+    registry.enableSimpleBroker("/topic");
+//        .setHeartbeatValue(new long[]{1000, 1000})
+//        .setTaskScheduler(taskScheduler());  // TaskScheduler 설정
 
     registry.setApplicationDestinationPrefixes("/app");
 
