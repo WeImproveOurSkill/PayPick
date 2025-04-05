@@ -116,7 +116,6 @@
 - 공통
     - API 문서 작성하기
     - API
-        
         [API 명세서](https://www.notion.so/10f196aab732813482faca6cc54522fa?pvs=21)
         
 - 프론트엔드
@@ -191,7 +190,7 @@
 | --- | --- | --- |
 | **매장 위치 확인** | Spring / TypeScript / Naver API | Naver API For Search and I/O Store Data |
 | **채팅** | Spring / TypeScript | Socket / SockJS / Stomp / Axios |
-| **CI/CD** | Docker, Jenkins, Dockerhub, Kubernetes | Docker, Jenkins, Dockerhub, Kubernetes Rollout |
+| **CI/CD** | Docker, Jenkins, Dockerhub, Kubernetes | Docker, Dockerhub |
 | **Nginx** | nginx | Nginx, Let's encrypt, 
 For HTTPS |
 | **배포** | AWS | EC2(Ubuntu Server 20.04 LTS) |
