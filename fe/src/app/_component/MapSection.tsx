@@ -6,14 +6,14 @@ import { HydrationBoundary, dehydrate, QueryClient } from '@tanstack/react-query
 import useMap, { INITIAL_ZOOM } from '@/hooks/useMap';
 import useStore from '@/hooks/useStore';
 import StoreDetail from './StoreDetail';
-import { useModalStore } from '@/store/modal';
+import { useRerenderStore } from '@/store/modal';
 import MarkerCluster from './MarkerCluster';
 import { useEffect } from 'react';
 
 const MapSection = () => {
     const queryClient = new QueryClient();
     const dehydratedState = dehydrate(queryClient);
-    const { rerenderModal } = useModalStore();
+    const { rerenderModal } = useRerenderStore();
     const { initializeMap, center, getGeoLocation } = useMap();
     const { clearCurrentStore } = useStore();
    
