@@ -1,4 +1,4 @@
-export const baseURL = `https://localhost`
+export const baseURL = `https://www.testprepare.store/bp`
 
 export async function getApi (url:string) {
   try {
