@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import RerenderButton from './RerenderButton';
-import { useModalStore } from '@/store/modal';
+import { useDetailStore } from '@/store/modal';
 import { Store } from '@/types/store';
 import { NaverMap } from '@/types/map';
 import { getApi } from '@/hooks/api';
@@ -12,7 +12,7 @@ import { createHtmlMarkers } from './htmlMarker';
 
 const MarkerCluster = () => {
   const { getCornerCoordinates } = useMap();
-  const { storeModal } = useModalStore();
+  const { detailModal } = useDetailStore();
   const { setCurrentStore, clearCurrentStore } = useStore();
   const { data: currentStore } = useQuery<Store>({ queryKey: [CURRENT_STORE_KEY] });
   const { data: map } = useQuery<NaverMap>({ queryKey: [MAP_KEY] });
@@ -40,7 +40,7 @@ const MarkerCluster = () => {
 
   const MarkerClick =(store: Store) => {
     setCurrentStore(store);
-    storeModal(true);
+    detailModal(true);
   };
 
   useEffect(() => {

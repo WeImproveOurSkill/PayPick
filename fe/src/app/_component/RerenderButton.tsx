@@ -1,6 +1,6 @@
 import * as styles from './RerenderButton.css'
 import Modal from "./Modal"
-import { useModalStore } from "@/store/modal"
+import { useRerenderStore } from "@/store/modal"
 import { QueryObserverResult, RefetchOptions } from '@tanstack/react-query';
 import { Store } from '@/types/store';
 
@@ -12,7 +12,7 @@ type Props = {
 }
 
 const RerenderButton = ({ refetchMarkers }: Props) => {
-  const { rerenderShow, rerenderModal } = useModalStore();
+  const { rerenderShow, rerenderModal } = useRerenderStore();
 
   const onClick = async () => {
     try {
