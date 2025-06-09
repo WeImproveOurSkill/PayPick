@@ -58,7 +58,7 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
         // 특정 도메인 허용
-        configuration.addAllowedOrigin("https://localhost:3000");
+        configuration.addAllowedOrigin("https://www.paypick.site");
 
         // 허용할 HTTP 메서드 지정
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
